@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% block title %}About - Chronic Disease Prediction{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0"><i class="fas fa-info-circle"></i> About the System</h4>
+                </div>
+                <div class="card-body">
+                    <h5>Chronic Disease Prediction System</h5>
+                    <p>This advanced machine learning system predicts the likelihood of chronic diseases based on patient demographics, clinical measurements, lifestyle factors, and symptoms.</p>
+
+                    <h6>Diseases Predicted:</h6>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-heartbeat text-danger"></i> Heart Disease</li>
+                        <li class="list-group-item"><i class="fas fa-tint text-primary"></i> Diabetes</li>
+                        <li class="list-group-item"><i class="fas fa-lungs text-info"></i> Asthma</li>
+                        <li class="list-group-item"><i class="fas fa-procedures text-warning"></i> Hypertension</li>
+                        <li class="list-group-item"><i class="fas fa-kidneys text-success"></i> Kidney Disease</li>
+                    </ul>
+
+                    <h6>Technology Stack:</h6>
+                    <ul>
+                        <li><strong>Machine Learning:</strong> Logistic Regression (95.67% accuracy)</li>
+                        <li><strong>Text Processing:</strong> TF-IDF Vectorization</li>
+                        <li><strong>Data Processing:</strong> Scikit-learn, Pandas, NumPy</li>
+                        <li><strong>Web Framework:</strong> Flask with Bootstrap UI</li>
+                        <li><strong>Dataset:</strong> 1,500 synthetic patient records</li>
+                    </ul>
+
+                    <div class="alert alert-warning">
+                        <h6><i class="fas fa-exclamation-triangle"></i> Medical Disclaimer</h6>
+                        <p class="mb-0">This system is for educational and research purposes only. It should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider.</p>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('home') }}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Back to Prediction
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

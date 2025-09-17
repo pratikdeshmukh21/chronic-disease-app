@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+
+{% block title %}Prediction Results{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="fas fa-chart-line"></i> Prediction Results</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h3 class="text-primary">{{ predicted_disease }}</h3>
+                        <div class="badge bg-info fs-6 mb-3">
+                            Confidence: {{ confidence }}%
+                        </div>
+
+                        {% if confidence >= 80 %}
+                            <div class="alert alert-warning">
+                                <strong>High Risk Detected:</strong> Please consult with a healthcare professional for proper diagnosis and treatment.
+                            </div>
+                        {% elif confidence >= 60 %}
+                            <div class="alert alert-info">
+                                <strong>Moderate Risk:</strong> Consider discussing these symptoms with your doctor.
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success">
+                                <strong>Lower Risk:</strong> Continue monitoring your health and maintain healthy lifestyle habits.
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <h5>Disease Risk Probabilities:</h5>
+                    <div class="row">
+                        {% for disease, probability in all_probabilities.items() %}
+                        <div class="col-md-6 mb-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>{{ disease }}:</span>
+                                <span class="badge {% if disease == predicted_disease %}bg-primary{% else %}bg-secondary{% endif %}">
+                                    {{ "%.1f"|format(probability * 100) }}%
+                                </span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar {% if disease == predicted_disease %}bg-primary{% else %}bg-secondary{% endif %}" 
+                                     style="width: {{ probability * 100 }}%"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="alert alert-light">
+                            <h6><i class="fas fa-info-circle"></i> Important Disclaimer:</h6>
+                            <p class="mb-0">This prediction is based on machine learning algorithms and should not replace professional medical advice. 
+                            Always consult with qualified healthcare providers for accurate diagnosis and treatment.</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('home') }}" class="btn btn-primary">
+                            <i class="fas fa-redo"></i> Make Another Prediction
+                        </a>
+                        <a href="{{ url_for('about') }}" class="btn btn-outline-info">
+                            <i class="fas fa-info"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
