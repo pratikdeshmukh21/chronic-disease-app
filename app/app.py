@@ -11,10 +11,10 @@ app = Flask(__name__)
 CORS(app)
 
 # ---------------- Paths ---------------- #
-MODEL_PATH = "app/models/best_disease_prediction_model.pkl"
-PREPROCESSOR_PATH = "app/models/preprocessor_basic.pkl"
-TFIDF_PATH = "app/models/tfidf_vectorizer.pkl"
-ENCODER_PATH = "app/models/label_encoder.pkl"
+MODEL_PATH = "models/best_disease_prediction_model.pkl"
+PREPROCESSOR_PATH = "models/preprocessor_basic.pkl"
+TFIDF_PATH = "models/tfidf_vectorizer.pkl"
+ENCODER_PATH = "models/label_encoder.pkl"
 
 # ---------------- Load Components ---------------- #
 print("🔄 Loading trained model and preprocessing components...")
